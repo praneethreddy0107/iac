@@ -1,13 +1,13 @@
 
 locals {
   network = (var.vpc_create ?
-  try(google_compute_network.network, 0, null) :
+    try(google_compute_network.network, 0, null) :
   try(data.google_compute_network.network.0, null))
 }
 
 data "google_compute_network" "network" {
-  count = var.vpc_create ? 0 : 1
-  name  = var.network_name
+  count   = var.vpc_create ? 0 : 1
+  name    = var.network_name
   project = var.project_id
 }
 

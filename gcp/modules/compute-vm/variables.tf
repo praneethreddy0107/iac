@@ -169,3 +169,47 @@ variable "create_template" {
   type        = bool
   default     = false
 }
+
+
+variable "tag_bindings" {
+  description = "Resource manager tag bindings for this instance, in tag key => tag value format."
+  type        = map(string)
+  default     = null
+}
+
+variable "tag_bindings_firewall" {
+  description = "Firewall (network scoped) tag bindings for this instance, in tag key => tag value format."
+  type        = map(string)
+  default     = null
+}
+
+
+variable "service_account" {
+  description = "Service account email and scopes. If email is null, the default Compute service account will be used unless auto_create is true, in which case a service account will be created. Set the variable to null to avoid attaching a service account."
+  type = object({
+    auto_create = optional(bool, false)
+    email       = optional(string)
+    scopes      = optional(list(string))
+  })
+  default = {}
+}
+
+
+variable "shielded_config" {
+  description = "Shielded VM configuration of the instances."
+  type = object({
+    enable_secure_boot          = bool
+    enable_vtpm                 = bool
+    enable_integrity_monitoring = bool
+  })
+  default = null
+}
+
+
+variable "group" {
+  description = "Define this variable to create an instance group for instances. Disabled for template use."
+  type = object({
+    named_ports = map(number)
+  })
+  default = null
+}

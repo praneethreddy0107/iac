@@ -66,19 +66,21 @@ variable "network_firewall_policy_enforcement_order" {
   default     = null
   description = "Set the order that Firewall Rules and Firewall Policies are evaluated. Valid values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`. (default null or equivalent to `AFTER_CLASSIC_FIREWALL`)"
 }
+
+
 /******************************************
 	subnets VPC
  *****************************************/
 variable "subnets" {
   type = list(object({
-    subnet_name                      = string
-    subnet_ip                        = string
-    subnet_region                    = string
-    subnet_private_access            = optional(string, "false")
-    subnet_private_ipv6_access       = optional(string)
-    
+    subnet_name                = string
+    subnet_ip                  = string
+    subnet_region              = string
+    subnet_private_access      = optional(string, "false")
+    subnet_private_ipv6_access = optional(string)
+
     subnet_flow_logs_metadata_fields = optional(list(string), [])
-     flow_logs_config = optional(object({
+    flow_logs_config = optional(object({
       aggregation_interval = optional(string, "INTERVAL_5_SEC")
       filter_expression    = optional(string, "true")
       flow_sampling        = optional(string, "0.5")
@@ -86,11 +88,11 @@ variable "subnets" {
       # only if metadata == "CUSTOM_METADATA"
       metadata_fields = optional(list(string), [])
     }))
-    description                      = optional(string)
-    purpose                          = optional(string)
-    role                             = optional(string)
-    stack_type                       = optional(string)
-    ipv6_access_type                 = optional(string)
+    description      = optional(string)
+    purpose          = optional(string)
+    role             = optional(string)
+    stack_type       = optional(string)
+    ipv6_access_type = optional(string)
   }))
   description = "The list of subnets being created"
 }

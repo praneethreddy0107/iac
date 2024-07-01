@@ -1,4 +1,5 @@
 
+
 output "external_ip" {
   description = "Instance main interface external IP addresses."
   value = (
@@ -8,7 +9,10 @@ output "external_ip" {
   )
 }
 
-
+output "group" {
+  description = "Instance group resource."
+  value       = try(google_compute_instance_group.unmanaged[0], null)
+}
 
 output "id" {
   description = "Fully qualified instance id."
@@ -42,3 +46,31 @@ output "self_link" {
   value       = try(google_compute_instance.instance[0].self_link, null)
 }
 
+output "service_account" {
+  description = "Service account resource."
+  value       = try(google_service_account.service_account[0], null)
+}
+
+output "service_account_email" {
+  description = "Service account email."
+  value       = try(local.service_account.email, null)
+}
+
+output "service_account_iam_email" {
+  description = "Service account email."
+  value = (
+    try(local.service_account.email, null) == null
+    ? null
+    : "serviceAccount:${local.service_account.email}"
+  )
+}
+
+output "template" {
+  description = "Template resource."
+  value       = try(google_compute_instance_template.instance[0], null)
+}
+
+output "template_name" {
+  description = "Template name."
+  value       = try(google_compute_instance_template.instance[0].name, null)
+}

@@ -1,8 +1,8 @@
 module "vpc" {
-  source                                 = "../../modules/vpc"
+  source                                 = "../../modules/net-vpc"
   vpc_create=true
   network_name                           = "test-vpc1"
-  project_id                             = "test"
+  project_id                             = "pkrb12"
   auto_create_subnetworks                = false
   mtu                                    = 1400
   delete_default_internet_gateway_routes = false
@@ -35,7 +35,7 @@ module "vpc" {
         }
     ]
 
-    secondary_ranges = {
+  secondary_ranges = {
         subnet-01 = [
             {
                 range_name    = "subnet-01-secondary-01"
