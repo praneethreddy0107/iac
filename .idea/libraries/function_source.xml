@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="function-source">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/gcp/projects/nodejs-docs-samples/functions/v2/helloPubSub/function-source.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
