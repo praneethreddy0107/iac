@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="RoomReservation">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/gcp/projects/nodejs-docs-samples/dialogflow/resources/RoomReservation.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
